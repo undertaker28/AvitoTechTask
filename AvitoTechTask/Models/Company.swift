@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - ParseModel
-struct ParseModel: Codable {
+struct CompanyModel: Codable {
     let company: Company
 }
 

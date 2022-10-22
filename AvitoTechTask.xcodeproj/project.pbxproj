@@ -13,6 +13,7 @@
 		E91C105F29033DAF00B5981A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91C105E29033DAF00B5981A /* Assets.xcassets */; };
 		E91C106229033DAF00B5981A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E91C106029033DAF00B5981A /* LaunchScreen.storyboard */; };
 		E91C10702903432800B5981A /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C106F2903432800B5981A /* Company.swift */; };
+		E91C10722903479200B5981A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C10712903479200B5981A /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E91C106129033DAF00B5981A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E91C106329033DAF00B5981A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E91C106F2903432800B5981A /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		E91C10712903479200B5981A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				E91C106929033FFE00B5981A /*  Resources */,
-				E91C106B2903412000B5981A /* Model */,
-				E91C106C2903415300B5981A /* Networking */,
+				E91C106B2903412000B5981A /* Models */,
+				E91C106C2903415300B5981A /* Services */,
 				E91C106D290341AC00B5981A /* ViewController */,
 				E91C106E290341D100B5981A /* View */,
 				E91C106329033DAF00B5981A /* Info.plist */,
@@ -85,19 +87,20 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		E91C106B2903412000B5981A /* Model */ = {
+		E91C106B2903412000B5981A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E91C106F2903432800B5981A /* Company.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		E91C106C2903415300B5981A /* Networking */ = {
+		E91C106C2903415300B5981A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E91C10712903479200B5981A /* NetworkService.swift */,
 			);
-			path = Networking;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E91C106D290341AC00B5981A /* ViewController */ = {
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91C10722903479200B5981A /* NetworkService.swift in Sources */,
 				E91C105A29033DAE00B5981A /* ViewController.swift in Sources */,
 				E91C105629033DAE00B5981A /* AppDelegate.swift in Sources */,
 				E91C105829033DAE00B5981A /* SceneDelegate.swift in Sources */,
