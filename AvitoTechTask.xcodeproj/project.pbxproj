@@ -14,6 +14,7 @@
 		E91C106229033DAF00B5981A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E91C106029033DAF00B5981A /* LaunchScreen.storyboard */; };
 		E91C10702903432800B5981A /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C106F2903432800B5981A /* Company.swift */; };
 		E91C10722903479200B5981A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C10712903479200B5981A /* NetworkService.swift */; };
+		E94532392904902400417336 /* EmployeeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94532382904902400417336 /* EmployeeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E91C106329033DAF00B5981A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E91C106F2903432800B5981A /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		E91C10712903479200B5981A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E94532382904902400417336 /* EmployeeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		E91C106E290341D100B5981A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E94532382904902400417336 /* EmployeeCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94532392904902400417336 /* EmployeeCollectionViewCell.swift in Sources */,
 				E91C10722903479200B5981A /* NetworkService.swift in Sources */,
 				E91C105A29033DAE00B5981A /* ViewController.swift in Sources */,
 				E91C105629033DAE00B5981A /* AppDelegate.swift in Sources */,
