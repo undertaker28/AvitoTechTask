@@ -12,16 +12,16 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         var nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.numberOfLines = 1
-        nameLabel.font = .systemFont(ofSize: 15)
+        nameLabel.numberOfLines = 2
+        nameLabel.font = .systemFont(ofSize: 14)
         return nameLabel
     }()
 
     let phoneNumberLabel: UILabel = {
         var phoneNumberLabel = UILabel()
         phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberLabel.numberOfLines = 1
-        phoneNumberLabel.font = .systemFont(ofSize: 15)
+        phoneNumberLabel.numberOfLines = 2
+        phoneNumberLabel.font = .systemFont(ofSize: 14)
         return phoneNumberLabel
     }()
 
@@ -29,20 +29,20 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
         var skillsLabel = UILabel()
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
         skillsLabel.numberOfLines = 2
-        skillsLabel.font = .systemFont(ofSize: 15)
+        skillsLabel.font = .systemFont(ofSize: 14)
         return skillsLabel
     }()
 
     let separatorViewUnderNameLabel: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = .lightGray
+        separatorView.backgroundColor = .systemGray5
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
 
     let separatorViewUnderPhoneLabel: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = .lightGray
+        separatorView.backgroundColor = .systemGray5
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
@@ -57,33 +57,33 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(separatorViewUnderPhoneLabel)
 
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 16
 
         let constraints = [
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 30),
-            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            nameLabel.heightAnchor.constraint(equalToConstant: 43),
+            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
             separatorViewUnderNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
             separatorViewUnderNameLabel.heightAnchor.constraint(equalToConstant: 0.5),
-            separatorViewUnderNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            separatorViewUnderNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            separatorViewUnderNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            separatorViewUnderNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
-            phoneNumberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
-            phoneNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            phoneNumberLabel.heightAnchor.constraint(equalToConstant: 30),
-            phoneNumberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            phoneNumberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 12),
+            phoneNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            phoneNumberLabel.heightAnchor.constraint(equalToConstant: 52),
+            phoneNumberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
             separatorViewUnderPhoneLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 8),
             separatorViewUnderPhoneLabel.heightAnchor.constraint(equalToConstant: 0.5),
-            separatorViewUnderPhoneLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            separatorViewUnderPhoneLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            separatorViewUnderPhoneLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            separatorViewUnderPhoneLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
-            skillsLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 15),
-            skillsLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            skillsLabel.heightAnchor.constraint(equalToConstant: 30),
-            skillsLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            skillsLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 12),
+            skillsLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            skillsLabel.heightAnchor.constraint(equalToConstant: 52),
+            skillsLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
         ]
         NSLayoutConstraint.activate(constraints)
     }
