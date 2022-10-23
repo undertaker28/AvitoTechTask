@@ -40,7 +40,7 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
         return separatorView
     }()
 
-    let separatorViewUnderPhoneLabel: UIView = {
+    let separatorViewUnderPhoneNumberLabel: UIView = {
         let separatorView = UIView()
         separatorView.backgroundColor = .systemGray5
         separatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,10 +51,10 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         contentView.addSubview(nameLabel)
-        contentView.addSubview(phoneNumberLabel)
-        contentView.addSubview(skillsLabel)
         contentView.addSubview(separatorViewUnderNameLabel)
-        contentView.addSubview(separatorViewUnderPhoneLabel)
+        contentView.addSubview(phoneNumberLabel)
+        contentView.addSubview(separatorViewUnderPhoneNumberLabel)
+        contentView.addSubview(skillsLabel)
 
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 16
@@ -75,10 +75,10 @@ class EmployeeCollectionViewCell: UICollectionViewCell {
             phoneNumberLabel.heightAnchor.constraint(equalToConstant: 52),
             phoneNumberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
-            separatorViewUnderPhoneLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 8),
-            separatorViewUnderPhoneLabel.heightAnchor.constraint(equalToConstant: 0.5),
-            separatorViewUnderPhoneLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
-            separatorViewUnderPhoneLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
+            separatorViewUnderPhoneNumberLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 8),
+            separatorViewUnderPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 0.5),
+            separatorViewUnderPhoneNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            separatorViewUnderPhoneNumberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
 
             skillsLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 12),
             skillsLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),

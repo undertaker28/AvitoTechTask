@@ -17,8 +17,8 @@ class ViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         let navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0/255, green: 170/255, blue: 255/255, alpha: 1)]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0/255, green: 170/255, blue: 255/255, alpha: 1)]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 76/255, green: 167/255, blue: 248/255, alpha: 1)]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 76/255, green: 167/255, blue: 248/255, alpha: 1)]
     }
 
     required init?(coder: NSCoder) {

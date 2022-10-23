@@ -338,6 +338,7 @@
 				DEVELOPMENT_TEAM = G4T7QK2U75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AvitoTechTask/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AvitoTask;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -367,6 +368,7 @@
 				DEVELOPMENT_TEAM = G4T7QK2U75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AvitoTechTask/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AvitoTask;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
