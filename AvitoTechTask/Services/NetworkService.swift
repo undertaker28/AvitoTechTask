@@ -10,11 +10,9 @@ import Foundation
 protocol NetworkService {
     func fetchData(completion: @escaping (CompanyModel) -> ())
     var companyModel: CompanyModel? { get set }
-    var errorMessage: (_ message: String) -> ()  { get set }
 }
 
 class NetworkManager: NetworkService {
-    var errorMessage = {(message : String) -> () in }
     var companyModel: CompanyModel?
     
     // MARK: - Save date of request
@@ -53,7 +51,7 @@ class NetworkManager: NetworkService {
         } else {
             URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
                 guard error == nil else {
-                    self?.errorMessage(error.debugDescription)
+                    print(error.debugDescription)
                     return
                 }
                 guard let data = data else { return }
