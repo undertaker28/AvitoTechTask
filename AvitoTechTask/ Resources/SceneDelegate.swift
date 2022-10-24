@@ -18,8 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let networkManager = NetworkManager()
         let viewController = UINavigationController(rootViewController: ViewController(networkManager: networkManager))
 
-        window.rootViewController = viewController
+        window.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         window.makeKeyAndVisible()
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.7) {
+            self.window?.rootViewController = viewController
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
