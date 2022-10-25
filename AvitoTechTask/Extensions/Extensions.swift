@@ -37,32 +37,26 @@ extension ViewController: UICollectionViewDataSource {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         
-        var stringWithDifferentFonts = NSMutableAttributedString(string: "Name\n",
-                                                   attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]);
-        stringWithDifferentFonts.append(NSMutableAttributedString(string: "\(dataSourceAtIndexPath.name)",
-                                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]));
-        var attributedString = changeColorText(inputString: stringWithDifferentFonts, changeColorString: "Name")
+        var attributedString = changeColorText(inputString: makeStringWithDifferentFonts(firstString: "Name\n", secondString: dataSourceAtIndexPath.name), changeColorString: "Name")
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         cell.nameLabel.attributedText = attributedString
         
-        stringWithDifferentFonts = NSMutableAttributedString(string: "Phone number\n",
-                                                   attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]);
-        stringWithDifferentFonts.append(NSMutableAttributedString(string: "\(dataSourceAtIndexPath.phoneNumber)",
-                                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]));
-        attributedString = changeColorText(inputString: stringWithDifferentFonts, changeColorString: "Phone number")
+        attributedString = changeColorText(inputString: makeStringWithDifferentFonts(firstString: "Phone number\n", secondString: dataSourceAtIndexPath.phoneNumber), changeColorString: "Phone number")
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         cell.phoneNumberLabel.attributedText = attributedString
         
-        stringWithDifferentFonts = NSMutableAttributedString(string: "Skills\n",
-                                                   attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]);
-        stringWithDifferentFonts.append(NSMutableAttributedString(string: "\(dataSourceAtIndexPath.skills.joined(separator: ", "))",
-                                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]));
-        attributedString = changeColorText(inputString: stringWithDifferentFonts, changeColorString: "Skills")
+        attributedString = changeColorText(inputString: makeStringWithDifferentFonts(firstString: "Skills\n", secondString: dataSourceAtIndexPath.skills.joined(separator: ", ")), changeColorString: "Skills")
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         cell.skillsLabel.attributedText = attributedString
         
         title = networkManager.companyModel!.company.name
         return cell
+    }
+    
+    func makeStringWithDifferentFonts(firstString: String, secondString: String) -> NSMutableAttributedString {
+        var stringWithDifferentFonts = NSMutableAttributedString(string: firstString, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]);
+        stringWithDifferentFonts.append(NSMutableAttributedString(string: secondString, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]));
+        return stringWithDifferentFonts
     }
     
     func changeColorText(inputString: NSMutableAttributedString, changeColorString: String) -> NSMutableAttributedString {
