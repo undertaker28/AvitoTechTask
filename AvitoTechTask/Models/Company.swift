@@ -20,9 +20,10 @@ struct Company: Codable {
 
 // MARK: - Employee
 struct Employee: Codable {
-    let name, phoneNumber: String
+    let name: String
+    let phoneNumber: String
     let skills: [String]
-
+    
     enum CodingKeys: String, CodingKey {
         case name
         case phoneNumber = "phone_number"

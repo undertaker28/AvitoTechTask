@@ -8,42 +8,42 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         guard let window = window else { return }
         let networkManager = NetworkManager()
         let viewController = UINavigationController(rootViewController: ViewController(networkManager: networkManager))
-
+        
         window.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         window.makeKeyAndVisible()
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.7) {
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
             self.window?.rootViewController = viewController
         }
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
-
+        
     }
-
+    
     func sceneDidBecomeActive(_ scene: UIScene) {
-
+        
     }
-
+    
     func sceneWillResignActive(_ scene: UIScene) {
-
+        
     }
-
+    
     func sceneWillEnterForeground(_ scene: UIScene) {
-
+        
     }
-
+    
     func sceneDidEnterBackground(_ scene: UIScene) {
-
+        
     }
-
+    
 }

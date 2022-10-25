@@ -7,14 +7,11 @@
 
 import Foundation
 
-protocol NetworkService {
+protocol NetworkOutput {
     func fetchData(completion: @escaping (CompanyModel) -> ())
-    var companyModel: CompanyModel? { get set }
 }
 
-class NetworkManager: NetworkService {
-    var companyModel: CompanyModel?
-    
+class NetworkManager: NetworkOutput {
     // MARK: - Save date of request
     var dateOfRequest: Double? {
         get {
@@ -29,7 +26,7 @@ class NetworkManager: NetworkService {
         }
     }
     
-    func fetchData(completion: @escaping (CompanyModel) -> ()) {
+    func fetchData( completion: @escaping (CompanyModel) -> ()) {
         guard let url = URL(string: "https://run.mocky.io/v3/1d1cb4ec-73db-4762-8c4b-0b8aa3cecd4c") else { return }
         var request = URLRequest(url: url)
         request.cachePolicy = .returnCacheDataElseLoad
@@ -40,30 +37,22 @@ class NetworkManager: NetworkService {
         }
         
         if let cacheResponse = URLSession.shared.configuration.urlCache?.cachedResponse(for: request) {
-            do {
-                self.companyModel = try JSONDecoder().decode(CompanyModel.self, from: cacheResponse.data)
-                print("Fetched data from cache")
-                return
-            } catch {
-                print(error)
-                return
+            guard let result = try? JSONDecoder().decode(CompanyModel.self, from: cacheResponse.data) else { return }
+            DispatchQueue.main.async {
+                completion(result)
             }
         } else {
             URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-                guard error == nil else {
-                    print(error.debugDescription)
-                    return
-                }
+                guard error == nil else { return }
                 guard let data = data else { return }
                 do {
-                    self?.companyModel = try JSONDecoder().decode(CompanyModel.self, from: data)
+                    let result = try JSONDecoder().decode(CompanyModel.self, from: data)
                     DispatchQueue.main.async {
-                        completion((self?.companyModel)!)
+                        completion(result)
                     }
                     self?.dateOfRequest = NSDate().timeIntervalSince1970
-                    print("Fetched data from server")
                 } catch {
-                    print(error.localizedDescription)
+                    return
                 }
             }.resume()
         }

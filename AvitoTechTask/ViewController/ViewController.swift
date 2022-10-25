@@ -9,76 +9,52 @@ import UIKit
 import Reachability
 
 class ViewController: UIViewController {
-
-    var networkManager: NetworkService
-    var rightBarButtonItem: SystemSymbol = .wifi {
+    
+    public var data: CompanyModel?
+    public var employeesFiltered: [Employee]?
+    private let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "wifi"), style: .plain, target: ViewController.self, action: nil)
+    private var networkManager: NetworkOutput
+    private var rightBarButtonItem: SystemSymbol = .wifi {
         didSet {
             DispatchQueue.main.async {
-                let rightBarButton = UIBarButtonItem(
-                    image: UIImage(systemName: self.rightBarButtonItem.rawValue),
-                    style: .plain,
-                    target: ViewController.self,
-                    action: nil)
-                self.navigationItem.rightBarButtonItem = rightBarButton
+                self.rightBarButton.image = UIImage(systemName: self.rightBarButtonItem.rawValue)
+                self.navigationItem.rightBarButtonItem = self.rightBarButton
             }
         }
     }
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let reachability = try! Reachability()
-
-    init(networkManager: NetworkService) {
+    private let reachability = try? Reachability()
+    
+    init(networkManager: NetworkOutput) {
         self.networkManager = networkManager
         super.init(nibName: nil, bundle: nil)
-        
-        let navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 76/255, green: 167/255, blue: 248/255, alpha: 1)]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 76/255, green: 167/255, blue: 248/255, alpha: 1)]
+        setupNavBarAppearance()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        
+        setupView()
         checkReachable()
         startObserve()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        reachability.stopNotifier()
-    }
-    
     func startObserve() {
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
+        try? reachability?.startNotifier()
     }
     
     func checkReachable() {
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
-                print("Connection via wifi")
-                self.setup()
-            } else {
-                print("Connection via celluar")
-                self.setup()
-            }
+        reachability?.whenReachable = { [weak self] reachability in
+            self?.setup()
         }
         
-        reachability.whenUnreachable = { _ in
-            print("Not reachable")
-            self.rightBarButtonItem = .wifiSlash
-            self.showAlert()
+        reachability?.whenUnreachable = { [weak self] _ in
+            self?.rightBarButtonItem = .wifiSlash
+            self?.showAlert()
         }
     }
     
@@ -87,18 +63,33 @@ class ViewController: UIViewController {
         self.configCollectionView()
         self.constraintLayout()
         self.networkManager.fetchData { avito in
+            self.data = avito
+            self.employeesFiltered = self.data?.company.employees
+            self.employeesFiltered?.sort(by: {$0.name < $1.name})
             self.collectionView.reloadData()
         }
     }
-
+    
+    func setupView() {
+        view.backgroundColor = UIColor.smokyWhite
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    func setupNavBarAppearance() {
+        let navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.blue]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blue]
+    }
+    
     func configCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        collectionView.backgroundColor = UIColor.smokyWhite
         collectionView.register(EmployeeCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmployeeCollectionViewCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     func constraintLayout() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
